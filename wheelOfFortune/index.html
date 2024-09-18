@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wheel of Fortune</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+</head>
+
+<div class="confetti-container"></div>
+
+<body>
+  <img src="./assets/gameLogo.png" class="gameLogo"/>
+  <div id="upperContainer">
+    <img src="./assets/images/weel-picker.png" id="arrow" />
+    <canvas id="canvas"></canvas>
+    <button id="spinButton" class="spin-btn">
+      <img src="./assets/images/spin-button.png" class="spin-btn-image" />
+    </button>
+    <button id="playAgainButton" class="spin-btn">
+      <img src="./assets/images/play-Again.png" class="spin-btn-image" />
+    </button>
+    <div class="lights"></div>
+  </div>
+  <div class="lowerContainer">
+    <div class="menuBar">
+      <div class="scratch-menu">
+        <div class="burger-menu">
+          <i class="item"></i>
+          <i class="item"></i>
+          <i class="item"></i>
+        </div>
+        <ul class="menu-content">
+          <li class="menu-item" onclick="openHowToPlayDialog()">
+            <div class="hover-container">
+              <span class="hover-container__label">how to play</span>
+            </div>
+            <img src="./assets/icons/howtoplay.svg" class="button-image" />
+          </li>
+          <li class="menu-item tickets-item" onclick="openTicketInfo()">
+            <div class="hover-container">
+              <span class="hover-container__label">tickets</span>
+            </div>
+            <img id="ticket-icon" src="./assets/icons/tickets-icon.svg" class="button-image" />
+            <div id="ticket-custom-loader" class="custom-loader ticket-loader"></div>
+          </li>
+          <li class="menu-item" onclick="openHowToWinDialog()">
+            <div class="hover-container">
+              <span class="hover-container__label">how to win</span>
+            </div>
+            <img src="./assets/icons/howtowin.svg" class="button-image" />
+          </li>
+        </ul>
+      </div>
+
+      <div class="menuBarAvlblTckts">
+        <span class="tickets-text">Billets<br />Disponibles</span>
+        <div class="small-areaContainer">
+          <span class="tickets-text-mobile">Billets<br />Disponibles</span>
+          <div class="ticket-inside">
+            <span id="availableTickets">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="menuBarTickets">
+        <div class="counter-container">
+          <button class="counter-btn" id="remove">-</button>
+          <div class="ticket-container">
+            <span id="count" class="countTickets">0</span>
+          </div>
+          <button class="counter-btn" id="add">+</button>
+        </div>
+        <a href="#" class="acheter-Button" id="buy">Acheter</a>
+        <img src="./assets/images/success.png" class="sucessMessage hidden" id="sucessBuy" />
+      </div>
+    </div>
+  </div>
+  <div id="rays-container">
+    <svg id="raysSvg" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="3" />
+    </svg>
+  </div>
+  <dialog id="myDialog">
+    <button class="close-btn" onclick="closePopup()">x</button>
+    <div id="dialog-content"></div>
+  </dialog>
+  <dialog id="ticketsDialog">
+    <button class="close-btn" onclick="closeTicketDialog()">x</button>
+    <div class="ticketDialog-content">
+      <table id="ticketsDialog-content">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date d'achat</th>
+            <th>Achats</th>
+            <th>Gain</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </dialog>
+  <dialog id="howToPlayDialog">
+    <button class="close-btn" onclick="closeHowToPlayDialog()">x</button>
+    <div id="dialog-content">
+      <div class="winner-condition">
+        <div class="tag-container">
+          <span class="tag-number">1</span>
+        </div>
+        <span class="win-condition">achetez un billét</span>
+      </div>
+      <div class="winner-condition">
+        <div class="tag-container">
+          <span class="tag-number">2</span>
+        </div>
+        <span class="win-condition">tournez la roue</span>
+      </div>
+      <div class="winner-condition">
+        <div class="tag-container">
+          <span class="tag-number">3</span>
+        </div>
+        <span class="win-condition">trouvez une forme et gagnez le montant associé</span>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="howToWinDialog">
+    <button class="close-btn" onclick="closeHowToWinDialog()">x</button>
+    <div class="howToWin-content">
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/Cherry.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/chip.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/Crown.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/Grape.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/hat.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/lemmon.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/money.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+      <div class="howToWin-condition">
+        <img src="./assets/images/icons/strawberry.png" class="howToWinImg" />
+        <span class="howToWinPrize">200</span>
+      </div>
+    </div>
+  </dialog>
+  <div class="scoringContainer">
+    <div id="scoreAnimation" class="scoreAnimation hidden">0</div>
+</div>
+<div class="confetti-container"></div>
+  <script src="script.js"></script>
+</body>
+<script>
+  var scratchMenus = document.querySelectorAll(".scratch-menu");
+  scratchMenus.forEach(function (scratchMenu) {
+    var burgerMenu = scratchMenu.querySelector(".burger-menu");
+    burgerMenu.addEventListener("click", function (event) {
+      event.stopPropagation();
+      scratchMenu.classList.toggle("burger-active");
+    });
+  });
+</script>
+
+</html>

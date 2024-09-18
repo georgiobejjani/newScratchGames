@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Sport de chance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" />
+</head>
+
+<body>
+    <div class="bottomContainer">
+        <div class="inside-content">
+            <div class="scratch-menu">
+                <div class="burger-menu">
+                    <i class="item"></i>
+                    <i class="item"></i>
+                    <i class="item"></i>
+                </div>
+                <ul class="menu-content">
+                    <li class="menu-item" onclick="openHowToPlayPopup()">
+                        <div class="hover-container">
+                            <span class="hover-container__label">how to play</span>
+                        </div>
+                        <img src="./assets/icons/howtoplay.svg" class="button-image" />
+                    </li>
+                    <li class="menu-item tickets-item" onclick="openTicketInfo()">
+                        <div class="hover-container">
+                            <span class="hover-container__label">Achats</span>
+                        </div>
+                        <img id="ticket-icon" src="./assets/icons/tickets-icon.svg" class="button-image" />
+                        <div id="ticket-custom-loader" class="custom-loader ticket-loader"></div>
+                    </li>
+                    <li class="menu-item tickets-item" onclick="openWinningInfo()">
+                        <div class="hover-container">
+                            <span class="hover-container__label">Mes gains</span>
+                        </div>
+                        <img id="winnings-icon" src="./assets/icons/winnings.svg" class="button-image" />
+                        <div id="winnings-custom-loader" class="ticket-loader"></div>
+                    </li>
+                    <li class="menu-item" onclick="openHowToWinPopup()">
+                        <div class="hover-container">
+                            <span class="hover-container__label">how to win</span>
+                        </div>
+                        <img src="./assets/icons/howtowin.svg" class="button-image" />
+                    </li>
+                </ul>
+            </div>
+            <div class="counter-tickets">
+                <button class="ticketBtn minusbtn" id="remove">-</button>
+                <div class="ticket-container">
+                    <span id="count" class="countTickets">0</span>
+                </div>
+                <button class="ticketBtn plusbtn" id="add">+</button>
+                <button class="purchaseBtn" id="buy">acheter</button>
+                <img src="./assets/success.png" class="sucessMessage hidden" id="sucessBuy" />
+            </div>
+        </div>
+    </div>
+    <div class="small-areaContainer">
+        <span class="tickets-text-mobile">Billets</span>
+        <div class="ticket-inside">
+          <span id="availableTickets">0</span>
+        </div>
+      </div>
+      <div class="action-btns">
+        <button class="actionbtn actionbtn1" id="scratchAllButton">
+            grattez
+        </button>
+        <div class="actionbtn actionbtn2" id="playAgainButton">
+            <span id="replay-label">rejouer</span>
+            <div id="playAgain-custom-loader" class="custom-loader playAgain-loader"></div>
+        </div>
+    </div>
+
+    <div class="cardContainer" id="card-container">
+        <div class="contentContainer">
+            <div class="details-container">
+                <img src="./assets/icon-fcfa.png" class="price-icon" />
+                <img src="./assets/sportDeChance-logo.png" class="game-logo" />
+                <p class="rules-paragraph">Decouvre 3 montants identiques et gagnez
+                    1 fois ce montant. Gagnez jusqu'a 100.000 FCFA</p>
+            </div>
+            <img src="./assets/gameSection.png" class="emptybg" />
+            <div class="scoringContainer">
+                <div id="scoreAnimation" class="scoreAnimation hidden">0</div>
+            </div>
+            <div class="confetti-container"></div>
+        </div>
+        <div class="scratch-card">
+            <div class="main-scratchContainer"></div>
+            <div class="values-container">
+                <div id="arrayContainer"></div>
+            </div>
+            <canvas class="scratch-area"></canvas>
+        </div>
+    </div>
+    <audio id="myAudio" autoplay loop>
+        <source src="./assets/bg-music.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+    </audio>
+</body>
+<dialog id="myDialog">
+    <button class="close-btn" onclick="closePopup()">x</button>
+    <div id="dialog-content"></div>
+</dialog>
+<dialog id="ticketsDialog">
+    <button class="close-btn" onclick="closeTicketPopup()">x</button>
+    <div class="insideDialog">
+        <table id="ticketsDialog-content">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date d'achat</th>
+                    <th>Achats</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</dialog>
+<dialog id="winningDialog">
+    <button class="close-btn" onclick="closeWinningPopup()">x</button>
+    <div class="insideDialog">
+        <table id="winningDialog-content">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date d'achat</th>
+                    <th>Gain</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</dialog>
+<dialog id="howToPlayDialog">
+    <button class="close-btn" onclick="closeHowToPlayPopup()">x</button>
+    <div id="dialog-content">
+        <div class="winner-condition">
+            <div class="tag-container">
+                <span class="tag-number">1</span>
+            </div>
+            <span class="win-condition">achetez un billét</span>
+        </div>
+        <div class="winner-condition">
+            <div class="tag-container">
+                <span class="tag-number">2</span>
+            </div>
+            <span class="win-condition">grattez le ticket ou cliquez sur "grattez"</span>
+        </div>
+        <div class="winner-condition">
+            <div class="tag-container">
+                <span class="tag-number">3</span>
+            </div>
+            <span class="win-condition">trouvez 3 montant identiques et gagnez le montant associé</span>
+        </div>
+    </div>
+</dialog>
+<dialog id="howToWinDialog">
+    <button class="close-btn" onclick="closeHowToWinPopup()">x</button>
+    <div id="dialog-content">trouvez trois montant identiques et gagnez le montant associé</div>
+</dialog>
+
+<script src="script.js"></script>
+<script>
+    var scratchMenus = document.querySelectorAll(".scratch-menu");
+    scratchMenus.forEach(function (scratchMenu) {
+        var burgerMenu = scratchMenu.querySelector(".burger-menu");
+        burgerMenu.addEventListener("click", function (event) {
+            event.stopPropagation();
+            scratchMenu.classList.toggle("burger-active");
+        });
+    });
+</script>
+
+</html>

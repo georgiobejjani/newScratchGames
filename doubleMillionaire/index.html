@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>double millionaire</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" />
+</head>
+
+<body>
+    <div class="bottomContainer">
+        <div class="inside-content">
+            <!-- <div class="scratch-menu">
+                <div class="burger-menu">
+                    <i class="item"></i>
+                    <i class="item"></i>
+                    <i class="item"></i>
+                </div>
+                <ul class="menu-content">
+                    <li class="menu-item">
+                        <div class="hover-container">
+                            <span class="hover-container__label">sound</span>
+                        </div>
+                        <img src="./assets/icons/soundIcon.png" class="button-image" />
+                    </li>
+                    <li class="menu-item">
+                        <div class="hover-container">
+                            <span class="hover-container__label">how to play</span>
+                        </div>
+                        <img src="./assets/icons/howtoplayIcon.png" class="button-image" />
+                    </li>
+                    <li class="menu-item">
+                        <div class="hover-container">
+                            <span class="hover-container__label">tickets</span>
+                        </div>
+                        <img src="./assets/icons/ticketIcon.png" class="button-image" />
+                    </li>
+                    <li class="menu-item">
+                        <div class="hover-container">
+                            <span class="hover-container__label">how to win</span>
+                        </div>
+                        <img src="./assets/icons/howtowinIcon.png" class="button-image" />
+                    </li>
+                </ul>
+            </div> -->
+            <div class="info-container">
+				<button class="action-btn-infos" onclick="openTicketInfo()">
+					<img id="ticket-icon" src="./assets/icons/tickets-icon.svg" />
+					<div id="ticket-custom-loader" class="custom-loader ticket-loader"></div>
+				</button>
+				<!-- <button class="action-btn-infos" id="sound-btn" onclick="toggleSound()">
+					<div id="arrow-sound-caller" class="arrow-sound"></div>
+					<img src="./assets/icons/sound-icon.svg" id="sound-icon" />
+				</button> -->
+			</div>
+            <div class="counter-tickets">
+                <button class="ticketBtn minusbtn" id="remove">-</button>
+                <div class="ticket-container">
+                    <span id="count" class="countTickets">0</span>
+                </div>
+                <button class="ticketBtn plusbtn" id="add">+</button>
+                <button class="purchaseBtn" id="buy">acheter</button>
+                <img src="./assets/success.png" class="sucessMessage hidden" id="sucessBuy" />
+            </div>
+        </div>
+    </div>
+
+    <div class="cardContainer" id="card-container">
+        <div class="contentContainer">
+            <img src="./assets/arabBurj.png" class="arab-burj-img" />
+            <div class="upperStripcontainer"></div>
+              
+            <img src="./assets/emptyBg.jpg" class="emptybg" />
+            <div class="lowerStripcontainer">
+                <div class="lowerStrip-insideContent">
+                <div class="scratch-ticketCnt">
+                    <span class="tickets-label">billets</span>
+                    <div class="remaining-tickets" id="availableTickets">0</div>
+            </div>
+                <div class="action-btns">
+                    <button class="actionbtn actionbtn1" id="scratchAllButton">
+                        grattez
+                    </button>
+                    <div class="actionbtn actionbtn2" id="playAgainButton">
+                        <span id="replay-label">rejouer</span>
+                        <div id="playAgain-custom-loader" class="custom-loader playAgain-loader"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="scoringContainer">
+                <div id="scoreAnimation" class="scoreAnimation hidden">0</div>
+            </div>
+            <div class="confetti-container"></div>
+        </div>
+        <div class="scratch-card">
+            <img src="./assets/flowerWheel.png" class="back-flower" />
+            <img src="./assets/flowerWheel.png" class="main-flower" />
+            <div class="flowerContainer">
+                <div id="arrayContainer"></div>
+            </div>
+            <canvas class="scratch-area"></canvas>
+        </div>
+    </div>
+    <audio id="myAudio" autoplay loop>
+        <source src="./assets/bg-music.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+    </audio>
+</body>
+<dialog id="myDialog">
+    <div id="dialog-content"></div>
+    <button class="closeDialogBtn" onclick="closePopup()">x</button>
+</dialog>
+<dialog id="ticketsDialog">
+    <div class="test">
+        <table id="ticketsDialog-content">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date d'achat</th>
+                    <th>Prix</th>
+                    <th>Lot</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <button class="closeDialogBtn" onclick="closeTicketPopup()">x</button>
+</dialog>
+
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,1097 @@
+body {
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background-image: url('./assets/emptyBg.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.bottomContainer {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #009345;
+    height: 50px;
+    z-index: 10000;
+}
+
+.small-areaContainer {
+    position: absolute;
+    overflow: hidden;
+    bottom: 65px;
+    right: 0;
+    width: fit-content;
+    padding: 10px;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+    box-shadow: 0px 2px 4px 4px #00000040;
+    z-index: 1000;
+    background-color: #cb015a;
+    text-align: center;
+}
+
+.tickets-text-mobile {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+}
+
+#availableTickets {
+    color: white;
+    font-size: 20px;
+}
+
+.inside-content {
+    width: 95%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.burger-menu {
+    position: absolute;
+    width: 23px;
+    height: 20px;
+    cursor: pointer;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.item {
+    position: absolute;
+    width: 26px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: white;
+    transition: top 0.1s ease-in-out 0.2s, transform 0.2s ease-in-out, opacity 0.2s ease-in-out 0.2s, left 0.1s ease-in-out, background-color 0.1s;
+}
+
+.item:nth-child(1) {
+    top: 0;
+}
+
+.item:nth-child(2) {
+    top: 9px;
+}
+
+.item:nth-child(3) {
+    top: 18px;
+}
+
+
+.burger-active .item {
+    transition: top 0.1s ease-in-out, transform 0.2s ease-in-out 0.2s, opacity 0.1s ease-in-out 0.2s;
+}
+
+.burger-active .item:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.burger-active .item:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-active .item:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+.burger-active .menu-content {
+    transform: translateY(-65px);
+    padding: 25px 0;
+    max-height: 1000px; 
+}
+
+.menu-content {
+    position: absolute;
+    bottom: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.29, -0.05, 0.1, 1.38);
+    transform: translateY(100%);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    left: 10px;
+    background-color: #009345;
+    border-radius: 25px;
+    width: 50px;
+}
+
+.menu-item {
+    margin-top: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-item:nth-child(1) {
+    margin-top: 0;
+}
+
+.menu-item:hover .hover-container {
+    max-width: 200px;
+    opacity: 1;
+    visibility: visible;
+    transition: max-width 0.7s ease;
+}
+
+
+.button-image {
+    height: 22px;
+    display: block;
+    margin: auto;
+}
+
+.hover-container {
+    background-color: #383737;
+    position: absolute;
+    left: 100%;
+    top: 2px;
+    max-width: 0;
+    border-radius: 3px;
+    padding: 3px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-width 0.7s ease;
+}
+
+.hover-container__label {
+    display: block;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 8px;
+    text-align: center;
+    width: max-content;
+}
+
+.action-btns {
+    display: flex;
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.actionbtn {
+    border-radius: 40px;
+    border: none;
+    background-color: #cf1351;
+    color: #383737;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding: 10px 20px;
+    border: none;
+}
+
+.actionbtn1:hover {
+        cursor: pointer;
+        background-color: #f27f71;
+        color: white;
+}
+
+.actionbtn2:hover {
+        cursor: pointer;
+        color: #f27f71;
+}
+
+.playAgainIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scratch-ticketCnt {
+    position: absolute;
+    right: 10px;
+    width: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.remaining-tickets {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    width: fit-content;
+    font-size: 16px;
+    padding: 0 10px;
+    border-top: none;
+    border-bottom: none;
+    display: block;
+    margin: auto;
+}
+
+.tickets-label {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.scratch-card {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+
+}
+
+.main-scratchContainer {
+    width: 350px;
+    height: 300px;
+    position: relative;
+    border: 10px solid #5D5D5D;
+    border-radius: 12px;
+    background-color: #059142;
+}
+
+.scratch-area {
+    z-index: 1000;
+    width: 351px;
+    height: 301px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sucessMessage {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    height: 20px;
+    margin-left: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.cardContainer {
+    width: 500px;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+}
+
+.contentContainer {
+    position: relative;
+    overflow: hidden;
+    height: fit-content;
+}
+
+.emptybg {
+    height: calc(100vh - 65px);
+    width: 100%;
+    border-radius: 30px;
+}
+
+.arab-burj-img {
+    position: absolute;
+    bottom: 50px;
+    height: calc(100% - 150px);
+    width: 300px;
+    right: 0;
+}
+
+.inside-area {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    width: 100%;
+}
+
+.lowerStripcontainer {
+    position: absolute;
+    bottom: 25px;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 100%;
+    height: 50px;
+}
+
+.counter-tickets {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.ticketBtn {
+    background-color: transparent;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    font-size: 25px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    padding: 0;
+    cursor: pointer;
+}
+
+.minusbtn {
+    line-height: 27px;
+}
+
+.ticket-container {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.purchaseBtn {
+    width: 100px;
+    height: 40px;
+    background-color: #CB015A;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 3px;
+    border-radius: 32.5px;
+    text-transform: uppercase;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid #CB015A;
+    box-shadow: 0px 0px 4px 1px #00000040;
+
+}
+
+.popup-container {
+    background-color: #f5a0bd;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    border-radius: 30px;
+    width: 300px;
+    height: 150px;
+    word-break: break-all;
+    padding: 20px;
+    display: none;
+
+}
+
+.popup-content {
+    position: relative;
+    color: #383737;
+    text-align: center;
+}
+
+.close-btn {
+    margin-left: calc(100% - 30px);
+    font-size: 30px;
+    display: block;
+    background-color: #CB015A;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 21px;
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#myDialog, #ticketsDialog, #howToWinDialog, #howToPlayDialog, #winningDialog {
+    background-color: #009345;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 300px;
+    height: fit-content;
+    padding: 20px;
+    border: none;
+    outline: none;
+}
+
+#myDialog{
+    text-align: center;
+}
+
+#ticketsDialog, #winningDialog {
+    height: 400px;
+    width: 800px;
+    overflow: hidden;
+}
+
+.insideDialog {
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #009345 #ffffff;
+    margin-top: 20px;
+}
+
+.insideDialog::-webkit-scrollbar {
+    width: 10px;
+}
+
+.insideDialog::-webkit-scrollbar-track {
+    background: #ffffff36;
+}
+
+.insideDialog::-webkit-scrollbar-thumb {
+    background-color: #383737;
+    border-radius: 10px;
+}
+
+#ticketsDialog-content {
+    margin-top: 0;
+}
+
+#dialog-content {
+    font-size: 16px;
+    margin: 20px 0;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    word-break: break-word;
+}
+
+.closeDialogBtn {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    border: none;
+    background-color: #CB015A;
+    font-size: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: white;
+}
+
+.valueWrapper {
+    width: 33%;
+    margin-top: 10px;
+}
+
+#arrayContainer {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.value-image {
+    height: 50px;
+}
+
+.value-label {
+    width: 50%;
+    margin-top: 10px;
+}
+
+.custom-loader {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top: 2px solid transparent;
+    animation: spin 1s linear infinite;
+}
+
+.ticket-loader {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top: 2px solid transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.back-flower {
+    position: absolute;
+    left: -120px;
+    height: 350px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scoringContainer {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.scoreAnimation {
+    text-align: center;
+    font-size: 100px;
+    color: #ffffff;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-shadow: 0px 0px 0 rgb(249, 249, 249), -1px 0px 0 rgb(243, 243, 243), -2px 0px 0 rgb(236, 236, 236), -3px 0px 0 rgb(230, 230, 230), -4px 0px 0 rgb(224, 224, 224), -5px 0px 0 rgb(218, 218, 218), -6px 0px 0 rgb(211, 211, 211), -7px 0px 0 rgb(205, 205, 205), -8px 0px 0 rgb(199, 199, 199), -9px 0px 8px rgba(0, 0, 0, 0.24), -9px 0px 1px rgba(0, 0, 0, 0.5), 0px 0px 8px rgba(0, 0, 0, .2);
+    animation: scaleUp 1s ease-in-out forwards, fadeIn 1s ease-in-out forwards;
+}
+
+.scoringContainer.smaller {
+    top: 45%;
+    left: 42%;
+
+    .scoreAnimation {
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    background: linear-gradient(to bottom right, #f39c12, #e74c3c, #3498db, #2ecc71, #9b59b6);
+    transform-origin: top left;
+    animation: confettiFall 5s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-180deg);
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(180deg);
+    }
+}
+
+.losing-message {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    background-color: #f9a240;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 210px;
+    height: fit-content;
+    padding: 20px;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out forwards;
+    transform: translate(-50%, -50%);
+}
+
+.info-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.action-btn-infos {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+}
+
+.action-btn-infos:nth-child(2) {
+    margin-left: 10px;
+}
+
+.arrow-sound {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #f39b2f;
+    transform: rotateZ(240deg);
+    top: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    color: white;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.ticket-loader, .playAgain-loader {
+    display: none;
+}
+
+.playAgain-loader {
+    margin: 5px auto 0;
+}
+
+.blinking-button {
+    animation: blinkAnimation 2s ease infinite;
+}
+
+@keyframes blinkAnimation {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+
+    25%, 75% {
+        opacity: 0.7;
+    }
+}
+
+.lowerStrip-insideContent {
+    position: relative;
+    height: 100%;
+    width: 95%;
+    margin: auto;
+}
+
+.details-container {
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+.price-icon, .game-logo {
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+
+.game-logo {
+    left: 0;
+    height: 70px;
+}
+
+.rules-paragraph {
+    position: absolute;
+    text-align: center;
+    top: 120px;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+}
+
+.winner-condition {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.tag-container {
+    border: 2px solid white;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.tag-number {
+    color: white;
+    font-weight: 600;
+}
+
+.win-condition {
+    text-transform: capitalize;
+    color: white;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .actionbtn {
+        padding: 10px;
+        letter-spacing: 0;
+    }
+
+    .cardContainer {
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: initial;
+    }
+
+    .emptybg {
+        height: calc(100vh - 55px);
+        border-radius: 0;
+    }
+
+    .upperStripcontainer {
+        border-radius: 0;
+    }
+
+    .lowerStripcontainer {
+        border-radius: 0;
+    }
+
+    .popup-container {
+        font-size: 12px;
+    }
+
+    .arab-burj-img {
+        bottom: 45px;
+        height: calc(100% - 150px);
+        width: 230px;
+        right: -68px;
+    }
+
+    .scratch-card {
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+    }
+
+    .back-flower {
+        left: -75px;
+        height: 215px;
+        top: 10%;
+        transform: translateY(-50%);
+    }
+
+    .main-scratchContainer {
+        width: 300px;
+        height: 250px;
+    }
+
+    .scratch-area {
+        width: 300px;
+        height: 250px;
+    }
+
+    #arrayContainer {
+        bottom: 50%;
+        right: 50%;
+        transform: translate(50%, 50%);
+    }
+
+    .valueWrapper {
+        margin-top: 5px;
+    }
+
+    .remaining-tickets {
+        font-size: 12px;
+    }
+
+    .tickets-label {
+        letter-spacing: 0;
+        font-size: 12px;
+    }
+
+    .counter-tickets {
+        bottom: 45px;
+    }
+
+    .ticketBtn {
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        font-size: 14px;
+    }
+
+    .minusbtn {
+        line-height: 21px;
+    }
+
+    .ticket-container {
+        min-width: 40px;
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+    }
+
+    .purchaseBtn {
+        width: 90px;
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+
+    .scoreAnimation {
+        font-size: 50px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+    
+    table td,
+    table th {
+        padding: 4px;
+    }
+
+    #ticketsDialog {
+        width: calc(100% - 50px);
+    }
+
+    .bottomContainer {
+        height: 55px;
+    }
+
+    .ticket-container {
+        min-width: 40px;
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+    }
+    #ticketsDialog, #winningDialog {
+        width: calc(100% - 50px);
+    }
+
+    .burger-active {
+        .menu-content {
+            transform: translateY(-65px);
+        }
+    }
+
+    .bottomContainer {
+        height: 55px;
+    }
+
+    .menu-item {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    .actionbtn {
+        padding: 10px;
+        letter-spacing: 0;
+    }
+
+    .price-icon {
+        position: absolute;
+        right: 0;
+        height: 40px;
+    }
+
+    .z-logo {
+        top: 80px;
+        height: 40px;
+    }
+
+    .game-logo {
+        position: absolute;
+        height: 60px;
+    }
+
+    .rules-paragraph {
+        position: absolute;
+        text-align: center;
+        top: 115px;
+        font-size: 12px;
+        color: white;
+        font-weight: 600;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+
+    }
+
+    .cardContainer {
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: initial;
+    }
+
+    .emptybg {
+        height: calc(100vh - 55px);
+        border-radius: 0;
+    }
+
+    .upperStripcontainer {
+        border-radius: 0;
+    }
+
+    .lowerStripcontainer {
+        border-radius: 0;
+    }
+
+    .popup-container {
+        font-size: 12px;
+    }
+
+    .arab-burj-img {
+        bottom: 45px;
+        height: calc(100% - 150px);
+        width: 230px;
+        right: -68px;
+    }
+
+    .scratch-card {
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+    }
+
+    #arrayContainer {
+        width: 210px;
+        font-size: 12px;
+    }
+
+    .back-flower {
+        left: -75px;
+        height: 215px;
+        top: 10%;
+        transform: translateY(-50%);
+    }
+
+    .main-scratchContainer {
+        width: 240px;
+        height: 170px;
+    }
+
+    .scratch-area {
+        width: 240px;
+        height: 170px;
+    }
+
+    .valueWrapper {
+        margin-top: 5px;
+    }
+
+    .remaining-tickets {
+        font-size: 12px;
+    }
+
+    .tickets-label {
+        letter-spacing: 0;
+        font-size: 12px;
+    }
+
+    .counter-tickets {
+        bottom: 45px;
+    }
+
+    .ticketBtn {
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        font-size: 14px;
+    }
+
+    .minusbtn {
+        line-height: 21px;
+    }
+
+    .ticket-container {
+        min-width: 40px;
+        font-size: 12px;
+        height: 30px;
+    }
+
+    .purchaseBtn {
+        width: 90px;
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+
+    .scoreAnimation {
+        font-size: 50px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+    
+    table td,
+    table th {
+        padding: 4px;
+    }
+
+    #ticketsDialog {
+        width: calc(100% - 50px);
+    }
+}
